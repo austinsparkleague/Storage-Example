@@ -1,0 +1,24 @@
+{
+    "author": "liam@mcmains.net",
+    "dependencies": {},
+    "keywords": [],
+    "name": "storage",
+    "pebble": {
+        "capabilities": [
+            ""
+        ],
+        "displayName": "Storage",
+        "enableMultiJS": true,
+        "messageKeys": [],
+        "projectType": "native",
+        "resources": {
+            "media": []
+        },
+        "sdkVersion": "3",
+        "uuid": "3714e12c-1061-4e2b-876a-61f02bbf3614",
+        "watchapp": {
+            "watchface": false
+        }
+    },
+    "version": "1.0.0"
+}
