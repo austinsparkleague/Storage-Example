@@ -29,20 +29,26 @@ static void up_click_handler(ClickRecognizerRef recognizer, void *context) { // 
 
   //finally display the number of glasses of water
   text_layer_set_text(text_layer, buf);
+  
+  //save our number of glasses
+  StatusCode intStatus = persist_write_int(1, glassesOfWater);
 }
 
 static void down_click_handler(ClickRecognizerRef recognizer, void *context) {
   if(glassesOfWater > 0) { // we dont want negative glasses!
     //increment our counter for the number of glasses of water
-  glassesOfWater = glassesOfWater - 1;
+    glassesOfWater = glassesOfWater - 1;
+    
+    // turn our integer of the number of glasses of water into a string which we can display on the screen
+    static char buf[] = "00000000000";    /* <-- implicit NUL-terminator at the end here */
+    snprintf(buf, sizeof(buf), "%d", glassesOfWater);
   
-  // turn our integer of the number of glasses of water into a string which we can display on the screen
-  static char buf[] = "00000000000";    /* <-- implicit NUL-terminator at the end here */
-  snprintf(buf, sizeof(buf), "%d", glassesOfWater);
-
-  //finally display the number of glasses of water
-  text_layer_set_text(text_layer, buf);
-    } 
+    //finally display the number of glasses of water
+    text_layer_set_text(text_layer, buf);
+        
+    //save our number of glasses
+    StatusCode intStatus = persist_write_int(1, glassesOfWater);
+  } 
 }
 
 static void click_config_provider(void *context) {
